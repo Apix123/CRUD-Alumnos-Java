@@ -17,4 +17,8 @@ public String toString() {
          + "Edad: " + age + "\n";
 }
 
+public int getId(){
+    return id;
+}
+
 }
