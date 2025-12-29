@@ -21,4 +21,13 @@ public int getId(){
     return id;
 }
 
+public void setAge(int nueva_edad) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'setAge'");
+}
+
+public void setName(String nuevo_nombre) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'setName'");
+}
 }
