@@ -21,6 +21,7 @@ public int getId(){
     return id;
 }
 
+<<<<<<< HEAD
 public void setName(String name){
     this.name = name;
 }
@@ -29,4 +30,15 @@ public void setAge(int age){
     this.age = age;
 }
 
+=======
+public void setAge(int nueva_edad) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'setAge'");
+}
+
+public void setName(String nuevo_nombre) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'setName'");
+}
+>>>>>>> 052285b7beca62bcfec601ab1a406ebf6d0c7fd4
 }
