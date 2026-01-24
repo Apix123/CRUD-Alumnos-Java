@@ -14,7 +14,8 @@ public class Main {
         System.out.println("1. Agregar Alumno");
         System.out.println("2. Mostrar Alumno");
         System.out.println("3. Borrar Alumno");
-        System.out.println("4. Salir");
+        System.out.println("4. Editar Alumno");
+        System.out.println("5. Salir del Sistema");
         System.out.println("Elegir una opcion: ");
 
         int opcion = scanner.nextInt(); //---Declaro variable para que se guarde el valor declarado por el usuario.
@@ -63,7 +64,43 @@ public class Main {
                     System.out.println("ID no encontrado");
                 }
                 break;
-            case 4:
+                case 4:
+                    System.out.println("Proporciona ID para editar Alumno: ");
+                    int idEdita = scanner.nextInt();
+                    
+                    scanner.nextLine();
+
+                    boolean encontradoEdita = false;
+
+                    for(int i = 0; i < lista_alumnos.size(); i++){
+                        Alumno a = lista_alumnos.get(i);
+
+
+                        if(a.getId() == idEdita){
+
+                            lista_alumnos.set(i, lista_alumnos.get(i));
+
+                            System.out.println("Ingrese el Nombre: ");
+                            String nuevoName = scanner.nextLine();
+
+                            System.out.println("Ingrese la Edad: ");
+                            int nuevoAge = scanner.nextInt();
+
+                            a.setName(nuevoName);
+                            a.setAge(nuevoAge);
+
+                            encontradoEdita = true;
+                            System.out.println("Alumno actualizado correctmente");
+                            break;
+                        }
+                    }
+
+                    if(!encontradoEdita){
+                        System.out.println("ID no encontrado");
+                    }
+
+                    break;
+            case 5:
                 System.out.println("Saliendo del Sistema");
                 salir = true;//--Declaro que la variable "salir" sea verdadero para cerrar el While.
                 break;
