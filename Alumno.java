@@ -17,15 +17,23 @@ public String toString() {
          + "Edad: " + age + "\n";
 }
 
-public int getId(){
-    return id;
+public int getId(){//--Metodo para obtener el ID del alumno
+    return id;//--Retorna el valor del ID
 }
 
-public void setName(String name){
+public String getName(){//--Metodo para obtener el nombre del alumno
+    return name;
+}
+
+public void setName(String name){//--Metodo para modificar el nombre del alumno
     this.name = name;
 }
 
-public void setAge(int age){
+public int getAge(){//--Metodo para obtener la edad del alumno
+    return age;
+}
+
+public void setAge(int age){//--Metodo para modificar la edad del alumno
     this.age = age;
 }
 

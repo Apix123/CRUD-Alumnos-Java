@@ -12,7 +12,7 @@ public class Main {
 
         System.out.println("Menu CRUD");//--Escribo el menu para visualizarlo en la consola.
         System.out.println("1. Agregar Alumno");
-        System.out.println("2. Mostrar Alumno");
+        System.out.println("2. Mostrar Alumnos");
         System.out.println("3. Borrar Alumno");
         System.out.println("4. Editar Alumno");
         System.out.println("5. Salir del Sistema");
@@ -29,14 +29,32 @@ public class Main {
 
                 System.out.println("Escriba ID: ");//--Imprimo el mensaje para pedir datos.
                 int id = scanner.nextInt();//--Declaro la variable de la clase Alumno para leer parametro enteros.
-
+                
                 scanner.nextLine();//--Limpia buffer para el salto de linea.
 
                 System.out.println("Escriba Nombre: ");
                 String name = scanner.nextLine();
 
-                System.out.println("Escriba Edad: ");
-                int age = scanner.nextInt();
+                
+                int age = 0;//--Declaro la variable de la clase Alumno para leer parametro enteros.
+                
+                boolean edadValida = false;//--Declaro una variable para validar la edad del alumno.
+                while(!edadValida)//--Ciclo para validar la edad del alumno.
+                {
+                    System.out.println("Escriba Edad: ");
+                    String edadTexto = scanner.nextLine();//--Declaro una variable para leer la edad como texto y validar que sea un numero entero.
+                    try{
+                        age = Integer.parseInt(edadTexto);//--convertir el texto a un numero entero.
+                        if(age > 0 && age <= 80){//--Condiciones para validar que la edad sea mayor a 0 y menor a 80.
+                            edadValida = true;//--Si la edad es valida, entonces ya puede salir del ciclo while.
+                        }else{
+                            System.out.println("Numero fuera de rango, ingresar de nuevo.");
+                        }
+                        }
+                    catch(NumberFormatException e){
+                        System.out.println("No es un numero, ingresar de nuevo.");//--Mensaje para indicar que el valor no es valido y pedir que se ingrese de nuevo.
+                    }
+                }
 
                 Alumno alumno = new Alumno(id, name, age);//Declaro la variable(alumno), donde almacena los que se leyo anteriormente(id, name, age).
                 lista_alumnos.add(alumno);//--Declaro el Array para almacenar la variable.
@@ -44,7 +62,16 @@ public class Main {
 
             case 2:
                 System.out.println("Lista de Alumnos: ");
-                System.out.println(lista_alumnos);//--Imprimime la lista de Alumnos
+
+                if (lista_alumnos.isEmpty()) {
+                    System.out.println("No hay alumnos registrados.");
+                } else {
+                    for (Alumno a : lista_alumnos) {
+                        System.out.println("ID: " + a.getId() + //--Ciclo para mostrar la lista de alumnos registrados, donde se muestra el ID, nombre y edad de cada alumno.
+                                          " Nombre: " + a.getName() +
+                                          " Edad: " + a.getAge());
+                    }
+                }
                 break;
 
             case 3:
