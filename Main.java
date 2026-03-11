@@ -6,7 +6,8 @@ public class Main {
 
     Scanner scanner = new Scanner(System.in);//--Declaro un objeto escaner para leer entradas.
     ArrayList<Alumno> lista_alumnos = new ArrayList<>();//--Se crea el Array llamado lista_alumno basado de la clase Alumno.
-    boolean salir = false;
+    boolean salir = false;//--Declaro una variable para salir del ciclo while.
+    int contadorId = 1;//--Declaro una variable para contar el ID de cada alumno registrado.
 
     while(!salir){
 
@@ -26,15 +27,11 @@ public class Main {
 
             case 1:
                 System.out.println("Agregar Datos de Alumno");//--Muestro el mensaje para indicar que se agregara alumnos.
-
-                System.out.println("Escriba ID: ");//--Imprimo el mensaje para pedir datos.
-                int id = scanner.nextInt();//--Declaro la variable de la clase Alumno para leer parametro enteros.
                 
                 scanner.nextLine();//--Limpia buffer para el salto de linea.
 
                 System.out.println("Escriba Nombre: ");
                 String name = scanner.nextLine();
-
                 
                 int age = 0;//--Declaro la variable de la clase Alumno para leer parametro enteros.
                 
@@ -56,8 +53,10 @@ public class Main {
                     }
                 }
 
-                Alumno alumno = new Alumno(id, name, age);//Declaro la variable(alumno), donde almacena los que se leyo anteriormente(id, name, age).
+                Alumno alumno = new Alumno(contadorId, name, age);//Declaro la variable(alumno), donde almacena los que se leyo anteriormente(id, name, age).
                 lista_alumnos.add(alumno);//--Declaro el Array para almacenar la variable.
+                System.out.println("Se agrego el alumno con ID: " + contadorId + " Nombre: " + name + " Edad: " + age);//--Mensaje para indicar que se agrego el alumno.
+                contadorId++;//--Aumento el contador del ID para el siguiente alumno.
                 break;
 
             case 2:
