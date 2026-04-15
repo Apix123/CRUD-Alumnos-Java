@@ -30,34 +30,59 @@ public class Main {
                 
                 scanner.nextLine();//--Limpia buffer para el salto de linea.
 
+                //--VALIDAR EL NOMBRE DEL ALUMNO PARA QUE NO ESTE VACIO
+
+                String name = ""; //--Declaro la variable de la clase Alumno para leer parametro de texto.
+                boolean nombreValido = false;//--Declaro una variable para validar el nombre del alumno.
+
+                while(!nombreValido){//--Ciclo para validar que el nombre del alumno no este vacio.
                 System.out.println("Escriba Nombre: ");
-                String name = scanner.nextLine();
-                
+                name = scanner.nextLine();//--Declaro una variable para leer el nombre del alumno y validar que no este vacio.
+
+                if(name == null || name.trim().isEmpty()){//--Condicionante para validar que el nombre no sea nulo, vacio o solo espacios en blanco.
+                    System.out.println("Nombre invalido, ingresar de nuevo");
+                }else{
+                    nombreValido = true;//--Si el nombre es valido, entonces ya puede salir del ciclo while.
+                }
+                }
+
+                //--VALIDAR LA EDAD DEL ALUMNO PARA QUE SEA UN NUMERO ENTERO Y ESTE DENTRO DE UN RANGO VALIDO.
+
                 int age = 0;//--Declaro la variable de la clase Alumno para leer parametro enteros.
-                
                 boolean edadValida = false;//--Declaro una variable para validar la edad del alumno.
+
                 while(!edadValida)//--Ciclo para validar la edad del alumno.
                 {
                     System.out.println("Escriba Edad: ");
                     String edadTexto = scanner.nextLine();//--Declaro una variable para leer la edad como texto y validar que sea un numero entero.
+
                     try{
                         age = Integer.parseInt(edadTexto);//--convertir el texto a un numero entero.
+
                         if(age > 0 && age <= 80){//--Condiciones para validar que la edad sea mayor a 0 y menor a 80.
                             edadValida = true;//--Si la edad es valida, entonces ya puede salir del ciclo while.
                         }else{
                             System.out.println("Numero fuera de rango, ingresar de nuevo.");
                         }
-                        }
-                    catch(NumberFormatException e){
+                    }
+                    catch(NumberFormatException e){//--Captura la excepcion si el texto no se puede convertir a un numero entero.
                         System.out.println("No es un numero, ingresar de nuevo.");//--Mensaje para indicar que el valor no es valido y pedir que se ingrese de nuevo.
                     }
                 }
 
                 Alumno alumno = new Alumno(contadorId, name, age);//Declaro la variable(alumno), donde almacena los que se leyo anteriormente(id, name, age).
                 lista_alumnos.add(alumno);//--Declaro el Array para almacenar la variable.
-                System.out.println("Se agrego el alumno con ID: " + contadorId + " Nombre: " + name + " Edad: " + age);//--Mensaje para indicar que se agrego el alumno.
+
+                System.out.println("Se agrego el alumno con ID: " 
+                + contadorId 
+                + " Nombre: " 
+                + name 
+                + " Edad: " 
+                + age);//--Mensaje para indicar que se agrego el alumno.
+
                 contadorId++;//--Aumento el contador del ID para el siguiente alumno.
-                break;
+
+            break;
 
             case 2:
                 System.out.println("Lista de Alumnos: ");
@@ -66,9 +91,7 @@ public class Main {
                     System.out.println("No hay alumnos registrados.");
                 } else {
                     for (Alumno a : lista_alumnos) {
-                        System.out.println("ID: " + a.getId() + //--Ciclo para mostrar la lista de alumnos registrados, donde se muestra el ID, nombre y edad de cada alumno.
-                                          " Nombre: " + a.getName() +
-                                          " Edad: " + a.getAge());
+                        System.out.println(a);//--Ciclo para mostrar la lista de alumnos registrados, donde se llama al metodo toString de la clase Alumno para mostrar los datos del alumno.
                     }
                 }
                 break;

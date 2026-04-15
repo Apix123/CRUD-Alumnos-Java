@@ -11,8 +11,9 @@ public Alumno(int id, String name, int age) {
 }
 
 @Override //--indicando que esta sobreescribiendo
-public String toString() {
-    return "ID: " + id + "\n"
+public String toString() {//--Metodo para mostrar los datos del alumno
+    return "# Alumno\n" 
+         + "ID: " + id + "\n"
          + "Nombre: " + name + "\n" 
          + "Edad: " + age + "\n";
 }
